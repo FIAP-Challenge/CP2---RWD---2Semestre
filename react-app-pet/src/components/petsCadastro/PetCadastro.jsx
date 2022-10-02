@@ -1,4 +1,6 @@
 import React from 'react';
+import React, { useEffect, useState } from "react";
+import * as Yup from 'yup'
 
 const DisplayingErrorMessagesSchema = Yup.object().shape({
     nome: Yup.string()
@@ -33,10 +35,21 @@ const PetCadastro = () => {
         setListaPet([...listaPet, values])
     }
 
-const PetCadastro = () => {
+    useEffect(() => {
+        localStorage.setItem('lista', JSON.stringify(listaPet))
+    }, [listaPet])
+
+
+    const remover = (i) => {
+        let petRemover = listaPet;
+        petRemover.splice(i, 1)
+        setListaPet([...petRemover])
+    
+    }
+
     return(
         <div>
-            
+        {/* CONTINUA AE LUANNN... */}
         </div>
-    )
-}
+    )}
+    export default PetCadastro;
