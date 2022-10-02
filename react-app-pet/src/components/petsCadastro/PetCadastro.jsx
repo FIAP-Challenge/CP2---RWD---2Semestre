@@ -23,8 +23,15 @@ const getLocalStorage = () => {
     } else {
         return []
     }
-
 }
+
+const PetCadastro = () => {
+    const [listaPet, setListaPet] = useState(getLocalStorage())
+
+    const handleAddPets = (values) => {
+        // values.preventDefault();
+        setListaPet([...listaPet, values])
+    }
 
 const PetCadastro = () => {
     return(
