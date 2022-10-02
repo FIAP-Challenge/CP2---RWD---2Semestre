@@ -16,6 +16,16 @@ const DisplayingErrorMessagesSchema = Yup.object().shape({
         .required("Telefone é obrigatório")
 });
 
+const getLocalStorage = () => {
+    const data = localStorage.getItem('lista')
+    if (data) {
+        return JSON.parse(data)
+    } else {
+        return []
+    }
+
+}
+
 const PetCadastro = () => {
     return(
         <div>
