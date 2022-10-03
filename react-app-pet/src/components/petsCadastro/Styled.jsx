@@ -11,7 +11,7 @@ export const DivMaster = styled.div`
 
     .form-dog{
     
-    border-radius: 4px;
+    border-radius: 4px  ;
     background: #ffffff;
     padding: 20px;
     margin: 50px 0px;
