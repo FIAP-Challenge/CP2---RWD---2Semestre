@@ -12,7 +12,7 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { RiDeleteBinLine } from 'react-icons/ri';
 
-import { DivMaster } from './Styled'
+import { DivMaster, DivInput, DivErro, DivButton, ButtonSubmit, Img, ButtonDelete, DivNoContent } from './Styled'
 
 const DisplayingErrorMessagesSchema = Yup.object().shape({
     nome: Yup.string()
@@ -88,31 +88,31 @@ const PetCadastro = () => {
                                     <h2>Cadastre seu pet</h2>
                                 </div>
 
-                                <div className="div-input">
+                                <DivInput>
                                     <label htmlFor="nome">Nome *</label>
                                     <Field className="inputs" name="nome" placeholder={"Nome"} />
-                                    <div className="error">
+                                    <DivErro>
                                         {touched.nome && errors.nome && <div>{errors.nome}</div>}
-                                    </div>
-                                </div>
+                                    </DivErro>
+                                </DivInput>
 
-                                <div className="div-input">
+                                <DivInput>
                                     <label htmlFor="idade">Idade *</label>
                                     <Field className="inputs" type="number" name="idade" placeholder={"Idade"} />
-                                    <div className="error">
+                                    <DivErro>
                                         {touched.idade && errors.idade && <div>{errors.idade}</div>}
-                                    </div>
-                                </div>
+                                    </DivErro>
+                                </DivInput>
 
-                                <div className="div-input">
+                                <DivInput>
                                     <label htmlFor="raca">Raça *</label>
                                     <Field className="inputs" name="raca" placeholder={"Raça"} />
-                                    <div className="error">
+                                    <DivErro>
                                         {touched.raca && errors.raca && <div>{errors.raca}</div>}
-                                    </div>
-                                </div>
+                                    </DivErro>
+                                </DivInput>
 
-                                <div className="div-input">
+                                <DivInput>
                                     <label htmlFor="tamanho">Tamanho *</label>
                                     <Field id="tamanho" className="inputs" as="select" name="tamanho">
                                         <option value="" defaultValue>Selecione</option>
@@ -121,20 +121,20 @@ const PetCadastro = () => {
                                         <option value="Médio">Médio</option>
                                         <option value="Grande">Grande</option>
                                     </Field>
-                                    <div className="error">
+                                    <DivErro>
                                         {touched.tamanho && errors.tamanho && <div>{errors.tamanho}</div>}
-                                    </div>
-                                </div>
+                                    </DivErro>
+                                </DivInput>
 
-                                <div className="div-input">
+                                <DivInput>
                                     <label htmlFor="nomeDono">Nome do dono *</label>
                                     <Field className="inputs" name="nomeDono" placeholder={"Nome do dono"} />
-                                    <div className="error">
+                                    <DivErro>
                                         {touched.nomeDono && errors.nomeDono && <div>{errors.nomeDono}</div>}
-                                    </div>
-                                </div>
+                                    </DivErro>
+                                </DivInput>
 
-                                <div className="div-input">
+                                <DivInput>
                                     <label htmlFor="telDono">Telefone do dono *</label>
                                     <Field id="telDono" name="telDono" className="inputs"
                                         render={({ field }) => (
@@ -147,20 +147,20 @@ const PetCadastro = () => {
 
                                             />
                                         )} />
-                                    <div className="error">
+                                    <DivErro>
                                         {touched.telDono && errors.telDono && <div>{errors.telDono}</div>}
-                                    </div>
-                                </div>
+                                    </DivErro>
+                                </DivInput>
 
-                                <div className="div-input">
+                                <DivInput>
                                     <label htmlFor="imagemPet">Imagem pet</label>
                                     <Field className="inputs " name="imagemPet" placeholder="URL da imagem" />
-                                    <div className="error">
+                                    <DivErro>
                                         {touched.imagemPet && errors.imagemPet && <div>{errors.imagemPet}</div>}
-                                    </div>
-                                </div>
+                                    </DivErro>
+                                </DivInput>
 
-                                <div className="div-input">
+                                <DivInput>
                                     <label htmlFor="observacoes">Observações</label>
                                     <Field name="observacoes" className="inputs"
                                         render={({ field }) => (
@@ -171,14 +171,14 @@ const PetCadastro = () => {
                                             </textarea>
                                         )} />
 
-                                    <div className="error">
+                                    <DivErro>
                                         {touched.observacoes && errors.observacoes && <div>{errors.observacoes}</div>}
-                                    </div>
-                                </div>
+                                    </DivErro>
+                                </DivInput>
 
-                                <div className="div-button">
-                                    <button type="submit">Cadastrar</button>
-                                </div>
+                                <DivButton>
+                                    <ButtonSubmit type="submit">Cadastrar</ButtonSubmit>
+                                </DivButton>
 
                             </div>
 
@@ -210,7 +210,7 @@ const PetCadastro = () => {
                                     sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                                 >
                                     <TableCell component="th" scope="row">
-                                        <img className="class-img" src={row.imagemPet ? row.imagemPet : 'https://static.vecteezy.com/system/resources/previews/005/484/042/original/dog-logo-illustration-free-vector.jpg'} />
+                                        <Img src={row.imagemPet ? row.imagemPet : 'https://static.vecteezy.com/system/resources/previews/005/484/042/original/dog-logo-illustration-free-vector.jpg'} />
                                     </TableCell>
                                     {/* <TableCell align="right">{row.imagemPet}</TableCell> */}
                                     <TableCell align="center">{row.nome}</TableCell>
@@ -220,7 +220,7 @@ const PetCadastro = () => {
                                     <TableCell align="center">{row.nomeDono}</TableCell>
                                     <TableCell align="center">{row.telDono}</TableCell>
                                     <TableCell align="center">{row.observacoes}</TableCell>
-                                    <TableCell align="center"><button className="buttonDelete" onClick={() => { remover(i) }}><RiDeleteBinLine className="iconDelete" /></button></TableCell>
+                                    <TableCell align="center"><ButtonDelete onClick={() => { remover(i) }}><RiDeleteBinLine className="iconDelete" /></ButtonDelete></TableCell>
                                 </TableRow>
                             ))}
                         </TableBody>
@@ -228,11 +228,11 @@ const PetCadastro = () => {
                 </TableContainer>
                 ) :
                     (
-                        <div className="div-no-content">
+                        <DivNoContent>
 
                             <p>Não há nenhum pet cadastrado</p>
 
-                        </div>
+                        </DivNoContent>
 
                     )}
 

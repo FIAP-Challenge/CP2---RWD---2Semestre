@@ -10,7 +10,8 @@ export const DivMaster = styled.div`
 
 
     .form-dog{
-        
+    
+    border-radius: 4px;
     background: #ffffff;
     padding: 20px;
     margin: 50px 0px;
@@ -19,6 +20,19 @@ export const DivMaster = styled.div`
     box-shadow: -1px 0px 14px 4px #00000063;
     }
 
+    
+ 
+`;
+
+
+export const DivInput = styled.div`
+
+
+        display: flex;
+        margin: 18px 0px;
+        flex-direction: column;
+
+        
     input.inputs {
         padding-left: 5px;
         margin-top: 5px;
@@ -27,24 +41,8 @@ export const DivMaster = styled.div`
         height: 30px;
         background: #9c9c9cdb;
     }
-    
-    input.imagemPet {
-        background: none;
-    }
-    
-    .div-input {
-        margin: 18px 0px;
-    }
-    
-    .error{
-        color: rgb(255, 38, 38);
-    }
-    
-    .div-input {
-        display: flex;
-        margin: 18px 0px;
-        flex-direction: column;
-    }
+     
+
     
     select.inputs {
         padding-left: 5px;
@@ -68,20 +66,38 @@ export const DivMaster = styled.div`
         background: #9c9c9cdb;
     }
     
-    .div-button {
-        display: flex;
-        justify-content: center;
-    }
+
+`
+
+
+export const DivErro = styled.div`
+  
+        color: rgb(255, 38, 38);
     
-    .div-button button {
-        width: 90%;
-        height: 35px;
-        border: none;
-        border-radius: 5px;
-        background: #93e41c;
-    }
-    
-    img.class-img {
+`
+
+export const DivButton = styled.div`
+
+    display: flex;
+    justify-content: center;
+
+
+`
+
+
+export const ButtonSubmit = styled.button`
+
+    width: 90%;
+    height: 35px;
+    border: none;
+    border-radius: 5px;
+    background: #93e41c;
+
+`
+
+
+export const Img = styled.img`
+ 
         object-fit: cover;
         background-color: #aaa;
         border-radius: 50%;
@@ -89,21 +105,25 @@ export const DivMaster = styled.div`
         height: 50px;
         overflow: hidden;
         position: relative;
-    }
     
-    button.buttonDelete {
-        background: none;
-        border: none;
-        font-size: 20px;
-        color: red;
-    }
-    
-    .div-no-content {
-        width: 1000px;
-        display: flex;
-        background: white;
-        align-items: center;
-        justify-content: center;
-        border-radius: 4px;
-    }
-`;
+
+`
+
+
+export const ButtonDelete = styled.button`
+    background: none;
+    border: none;
+    font-size: 20px;
+    color: red;
+`
+
+export const DivNoContent = styled.div`
+
+    width: 1000px;
+    display: flex;
+    background: white;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+
+`
