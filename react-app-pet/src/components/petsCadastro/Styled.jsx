@@ -8,6 +8,17 @@ export const DivMaster = styled.div`
     justify-content: center;
     flex-direction: column;
 
+
+    .form-dog{
+        
+    background: #ffffff;
+    padding: 20px;
+    margin: 50px 0px;
+    width: 81%;
+    max-width: 500px;
+    box-shadow: -1px 0px 14px 4px #00000063;
+    }
+
     input.inputs {
         padding-left: 5px;
         margin-top: 5px;
@@ -95,14 +106,4 @@ export const DivMaster = styled.div`
         justify-content: center;
         border-radius: 4px;
     }
-`;
-
-export const FormDog = styled.form`
-
-    background: #ffffff;
-    padding: 20px;
-    margin: 50px 0px;
-    width: 81%;
-    max-width: 500px;
-    box-shadow: -1px 0px 14px 4px #00000063;
 `;

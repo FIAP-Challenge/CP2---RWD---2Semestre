@@ -12,7 +12,7 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { RiDeleteBinLine } from 'react-icons/ri';
 
-import { DivMaster, FormDog, Input, DivInput, DivButton, Button, DivError, InputsTexterra } from './Styled'
+import { DivMaster } from './Styled'
 
 const DisplayingErrorMessagesSchema = Yup.object().shape({
     nome: Yup.string()
@@ -61,7 +61,7 @@ const PetCadastro = () => {
 
     return (
         <DivMaster>
-            <FormDog>
+            <div className="form-dog">
                 <Formik
                     initialValues={{
                         nome: '',
@@ -185,7 +185,7 @@ const PetCadastro = () => {
                         </Form>
                     )}
                 </Formik>
-            </FormDog>
+            </div>
 
             <div className="listarPets">
                 {listaPet.length ? (<TableContainer className="table" component={Paper}>
@@ -220,7 +220,7 @@ const PetCadastro = () => {
                                     <TableCell align="center">{row.nomeDono}</TableCell>
                                     <TableCell align="center">{row.telDono}</TableCell>
                                     <TableCell align="center">{row.observacoes}</TableCell>
-                                    <TableCell align="center"><button className="buttonDelete" onClick={() => {remover(i)}}><RiDeleteBinLine className="iconDelete"/></button></TableCell>
+                                    <TableCell align="center"><button className="buttonDelete" onClick={() => { remover(i) }}><RiDeleteBinLine className="iconDelete" /></button></TableCell>
                                 </TableRow>
                             ))}
                         </TableBody>
@@ -228,12 +228,12 @@ const PetCadastro = () => {
                 </TableContainer>
                 ) :
                     (
-                    <div className="div-no-content">
+                        <div className="div-no-content">
 
-                        <p>Não há nenhum pet cadastrado</p>
+                            <p>Não há nenhum pet cadastrado</p>
 
-                    </div>
-                    
+                        </div>
+
                     )}
 
 
