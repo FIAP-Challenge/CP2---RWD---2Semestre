@@ -19,7 +19,7 @@ export const FormDog = styled.form`
     box-shadow: -1px 0px 14px 4px #00000063;
 `;
 
-export const Input = styled.div`
+export const Input = styled.input`
 
     padding-left: 5px;
     margin-top: 5px;

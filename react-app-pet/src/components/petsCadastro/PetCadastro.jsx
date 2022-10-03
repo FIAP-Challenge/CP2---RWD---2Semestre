@@ -1,8 +1,18 @@
 import React, { useEffect, useState } from "react";
-import * as Yup from 'yup'
+// import './styleCadastro.css'
 import { Formik, Form, Field } from 'formik';
+import * as Yup from 'yup'
 import InputMask from 'react-input-mask';
-import { DivMaster, FormDog, Input, DivInput } from './Styled'
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+import Paper from '@mui/material/Paper';
+import { RiDeleteBinLine } from 'react-icons/ri';
+
+import { DivMaster, FormDog, Input, DivInput, DivButton, Button, DivError, InputsTexterra } from './Styled'
 
 const DisplayingErrorMessagesSchema = Yup.object().shape({
     nome: Yup.string()
@@ -50,7 +60,6 @@ const PetCadastro = () => {
     }
 
     return (
-
         <DivMaster>
             <FormDog>
                 <Formik
@@ -79,31 +88,31 @@ const PetCadastro = () => {
                                     <h2>Cadastre seu pet</h2>
                                 </div>
 
-                                <DivInput>
+                                <div className="div-input">
                                     <label htmlFor="nome">Nome *</label>
                                     <Field className="inputs" name="nome" placeholder={"Nome"} />
                                     <div className="error">
                                         {touched.nome && errors.nome && <div>{errors.nome}</div>}
                                     </div>
-                                </DivInput>
+                                </div>
 
-                                <DivInput>
+                                <div className="div-input">
                                     <label htmlFor="idade">Idade *</label>
                                     <Field className="inputs" type="number" name="idade" placeholder={"Idade"} />
                                     <div className="error">
                                         {touched.idade && errors.idade && <div>{errors.idade}</div>}
                                     </div>
-                                </DivInput>
+                                </div>
 
-                                <DivInput>
+                                <div className="div-input">
                                     <label htmlFor="raca">Raça *</label>
                                     <Field className="inputs" name="raca" placeholder={"Raça"} />
                                     <div className="error">
                                         {touched.raca && errors.raca && <div>{errors.raca}</div>}
                                     </div>
-                                </DivInput>
+                                </div>
 
-                                <DivInput>
+                                <div className="div-input">
                                     <label htmlFor="tamanho">Tamanho *</label>
                                     <Field id="tamanho" className="inputs" as="select" name="tamanho">
                                         <option value="" defaultValue>Selecione</option>
@@ -115,17 +124,17 @@ const PetCadastro = () => {
                                     <div className="error">
                                         {touched.tamanho && errors.tamanho && <div>{errors.tamanho}</div>}
                                     </div>
-                                </DivInput>
+                                </div>
 
-                                <DivInput>
+                                <div className="div-input">
                                     <label htmlFor="nomeDono">Nome do dono *</label>
                                     <Field className="inputs" name="nomeDono" placeholder={"Nome do dono"} />
                                     <div className="error">
                                         {touched.nomeDono && errors.nomeDono && <div>{errors.nomeDono}</div>}
                                     </div>
-                                </DivInput>
+                                </div>
 
-                                <DivInput>
+                                <div className="div-input">
                                     <label htmlFor="telDono">Telefone do dono *</label>
                                     <Field id="telDono" name="telDono" className="inputs"
                                         render={({ field }) => (
@@ -141,17 +150,17 @@ const PetCadastro = () => {
                                     <div className="error">
                                         {touched.telDono && errors.telDono && <div>{errors.telDono}</div>}
                                     </div>
-                                </DivInput>
+                                </div>
 
-                                <DivInput>
+                                <div className="div-input">
                                     <label htmlFor="imagemPet">Imagem pet</label>
                                     <Field className="inputs " name="imagemPet" placeholder="URL da imagem" />
                                     <div className="error">
                                         {touched.imagemPet && errors.imagemPet && <div>{errors.imagemPet}</div>}
                                     </div>
-                                </DivInput>
+                                </div>
 
-                                <DivInput>
+                                <div className="div-input">
                                     <label htmlFor="observacoes">Observações</label>
                                     <Field name="observacoes" className="inputs"
                                         render={({ field }) => (
@@ -165,7 +174,7 @@ const PetCadastro = () => {
                                     <div className="error">
                                         {touched.observacoes && errors.observacoes && <div>{errors.observacoes}</div>}
                                     </div>
-                                </DivInput>
+                                </div>
 
                                 <div className="div-button">
                                     <button type="submit">Cadastrar</button>
@@ -177,6 +186,62 @@ const PetCadastro = () => {
                     )}
                 </Formik>
             </FormDog>
+
+            <div className="listarPets">
+                {listaPet.length ? (<TableContainer className="table" component={Paper}>
+                    <Table sx={{ minWidth: 1000 }} size="normal" aria-label="a dense table">
+                        <TableHead>
+                            <TableRow>
+                                <TableCell><b>Imagem</b></TableCell>
+                                <TableCell align="center"><b>Nome</b></TableCell>
+                                <TableCell align="center"><b>Idade</b></TableCell>
+                                <TableCell align="center"><b>Raça</b></TableCell>
+                                <TableCell align="center"><b>Tamanho</b></TableCell>
+                                <TableCell align="center"><b>Nome dono</b></TableCell>
+                                <TableCell align="center"><b>Telefone</b></TableCell>
+                                <TableCell align="center"><b>Observações</b></TableCell>
+                                <TableCell align="center"><b>Deletar</b></TableCell>
+                            </TableRow>
+                        </TableHead>
+                        <TableBody>
+                            {listaPet.map((row, i) => (
+                                <TableRow
+                                    key={row.nome}
+                                    sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                                >
+                                    <TableCell component="th" scope="row">
+                                        <img className="class-img" src={row.imagemPet ? row.imagemPet : 'https://static.vecteezy.com/system/resources/previews/005/484/042/original/dog-logo-illustration-free-vector.jpg'} />
+                                    </TableCell>
+                                    {/* <TableCell align="right">{row.imagemPet}</TableCell> */}
+                                    <TableCell align="center">{row.nome}</TableCell>
+                                    <TableCell align="center">{row.idade}</TableCell>
+                                    <TableCell align="center">{row.raca}</TableCell>
+                                    <TableCell align="center">{row.tamanho}</TableCell>
+                                    <TableCell align="center">{row.nomeDono}</TableCell>
+                                    <TableCell align="center">{row.telDono}</TableCell>
+                                    <TableCell align="center">{row.observacoes}</TableCell>
+                                    <TableCell align="center"><button className="buttonDelete" onClick={() => {remover(i)}}><RiDeleteBinLine className="iconDelete"/></button></TableCell>
+                                </TableRow>
+                            ))}
+                        </TableBody>
+                    </Table>
+                </TableContainer>
+                ) :
+                    (
+                    <div className="div-no-content">
+
+                        <p>Não há nenhum pet cadastrado</p>
+
+                    </div>
+                    
+                    )}
+
+
+
+
+            </div>
+
+
         </DivMaster >
     )
 }
